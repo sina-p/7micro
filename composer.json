@@ -1,0 +1,18 @@
+{
+    "name": "sina/7micro",
+    "autoload": {
+        "psr-4": {
+            "Sina\\7micro\\": "src/",
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sina alizadeh",
+            "email": "a.sina.alizadeh83@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
