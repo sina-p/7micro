@@ -4,14 +4,17 @@ namespace App\Core;
 use App\Utilities\Url;
 
 class StupidRouter{
-    private $routs ;
+    private $routes ;
 
     public function __construct()
     {
-        $this->routs = [
+        $this->routes = [
+
+            '/7micro/' => 'index/index.php',
             '/7micro/colors/blue' => 'colors/blue.php',
             '/7micro/colors/green' => 'colors/green.php',
             '/7micro/colors/red' => 'colors/red.php'
+
         ] ;
     }
 
@@ -19,7 +22,7 @@ class StupidRouter{
     {
         $currnet_route = Url::current_route() ;
 
-        foreach ($this->routs as $route => $view) {
+        foreach ($this->routes as $route => $view) {
             if($currnet_route == $route){
                 $this->includeAndDie(BASE_PATH . 'views/' . $view ) ;
             }

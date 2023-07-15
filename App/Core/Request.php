@@ -7,6 +7,7 @@ class Request{
     private $method ;
     private $user_agent ;
     private $ip ;
+    private $uri ;
 
     public function __construct()
     {
@@ -14,6 +15,7 @@ class Request{
         $this->method = $_SERVER['REQUEST_METHOD'] ;
         $this->user_agent = $_SERVER['HTTP_USER_AGENT'] ;
         $this->ip = $_SERVER['REMOTE_ADDR'] ;
+        $this->uri = strtok($_SERVER['REQUEST_URI'] , '?') ;
     }
 
     public function __get($param)
@@ -37,6 +39,10 @@ class Request{
     public function getIp()
     {
         return $this->ip ;
+    }
+    public function getUri()
+    {
+        return $this->uri ;
     }
     public function isset($key)
     {
