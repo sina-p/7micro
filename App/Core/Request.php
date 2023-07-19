@@ -12,7 +12,7 @@ class Request{
     public function __construct()
     {
         $this->params = $_REQUEST ; # params
-        $this->method = $_SERVER['REQUEST_METHOD'] ;
+        $this->method = strtolower($_SERVER['REQUEST_METHOD']) ;
         $this->user_agent = $_SERVER['HTTP_USER_AGENT'] ;
         $this->ip = $_SERVER['REMOTE_ADDR'] ;
         $this->uri = strtok($_SERVER['REQUEST_URI'] , '?') ;
@@ -22,6 +22,10 @@ class Request{
     {
         return $this->params[$param] ?? null ;
     }
+
+
+
+
 
 
     public function getParams()
@@ -44,13 +48,18 @@ class Request{
     {
         return $this->uri ;
     }
-    public function isset($key)
-    {
-        return isset($this->params[$key]) ;
-    }
     public function getInput($key)
     {
         return $this->params[$key] ?? null ;
+    }
+
+
+
+
+
+    public function isset($key)
+    {
+        return isset($this->params[$key]) ;
     }
     public function redirect($route)
     {

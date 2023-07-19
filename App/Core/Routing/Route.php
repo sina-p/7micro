@@ -7,48 +7,33 @@ class Route{
 
     private static $routes = [] ;
 
-
-    public static function add($methods,$uri,$action = null)
+    public static function __callStatic($methods, $arguments)
     {
-        $methods = is_array($methods) ? $methods : [$methods] ;
-        self::$routes[] = ['methods' => $methods,'uri' => $uri,'action' => $action] ;
+        $http_verbs = ['get', 'post', 'put', 'patch', 'delete', 'options'] ;
+
+        if(!in_array($methods, $http_verbs))
+            throw new \Exception('Request method not support!');
+
+        $uri = $arguments[0] ;
+        $action = $arguments[1] ?? null;
+        self::add($methods,$uri,$action) ;
     }
 
-    public static function routes()
+    public static function add(array|string $methods, string $uri, $action = null)
+    {
+        $methods = is_array($methods) ? $methods : [$methods] ;
+        self::$routes[] = [
+
+            'methods' => $methods ,
+            'uri' => $uri,
+            'action' => $action
+
+        ] ;
+    }
+
+    public static function getRoutes()
     {
         return self::$routes ;
     }
-
-
-    public static function get($uri,$action = null)
-    {
-        self::add('get',$uri,$action) ;
-    }
-
-    public static function post($uri,$action = null)
-    {
-        self::add('post',$uri,$action) ;
-    }
-
-    public static function put($uri,$action = null)
-    {
-        self::add('put',$uri,$action) ;
-    }
-
-    public static function patch($uri,$action = null)
-    {
-        self::add('patch',$uri,$action) ;
-    }
-
-    public static function delete($uri,$action = null)
-    {
-        self::add('delete',$uri,$action) ;
-    }
-
-    public static function options($uri,$action = null)
-    {
-        self::add('options',$uri,$action) ;
-    }
-
 
 }

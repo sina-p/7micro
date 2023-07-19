@@ -10,10 +10,10 @@ class StupidRouter{
     {
         $this->routes = [
 
-            '/7micro/' => 'index/index.php',
-            '/7micro/colors/blue' => 'colors/blue.php',
-            '/7micro/colors/green' => 'colors/green.php',
-            '/7micro/colors/red' => 'colors/red.php'
+            '/' => 'index/index.php',
+            '/colors/blue' => 'colors/blue.php',
+            '/colors/green' => 'colors/green.php',
+            '/colors/red' => 'colors/red.php'
 
         ] ;
     }

@@ -13,3 +13,9 @@ function random_element(array $arr){
     return array_pop($arr) ;
 }
 
+function view(string $path):void
+{
+    $path = str_replace('.' , '/' , $path) ;
+    include_once BASE_PATH . "views/$path.php" ;
+}
+

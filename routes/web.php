@@ -5,13 +5,19 @@ use App\Core\Routing\Route;
 
 
 
-Route::get( '/null') ;
+Route::get('/' , 'HomeController@index') ;
 
-Route::post( '/formSaver' ,function(){
+
+
+Route::add( ['get' , 'post'] ,'/a' ,function(){
     echo "the form is saved successfully" ;
 }) ;
-Route::put( '/' ,function(){
+
+// Route::get( '/a' ,function(){
+//     echo "the form is saved successfully" ;
+// }) ;
+Route::get( '/b' ,function(){
     echo "welcome home!" ;
 }) ;
 
-print_r(Route::routes()) ;
+// print_r(Route::routes()) ;
